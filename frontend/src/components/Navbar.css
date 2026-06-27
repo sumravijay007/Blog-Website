@@ -1,0 +1,158 @@
+/* =========================================
+   Navbar — sticky glassmorphism bar
+   ========================================= */
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 0 32px;
+  height: 62px;
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(108, 99, 255, 0.1);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.04);
+}
+
+/* --- Brand --- */
+.navbar__brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.navbar__brand-icon {
+  font-size: 1.1rem;
+  color: #6c63ff;
+  line-height: 1;
+  display: flex;
+}
+
+.navbar__brand-text {
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: #111118;
+  line-height: 1;
+}
+
+/* --- Nav links --- */
+.navbar__links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex: 1;
+  justify-content: center;
+}
+
+.navbar__link {
+  position: relative;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #4b4b5a;
+  text-decoration: none;
+  transition: color 0.18s ease, background 0.18s ease;
+}
+
+.navbar__link:hover {
+  color: #6c63ff;
+  background: rgba(108, 99, 255, 0.07);
+}
+
+.navbar__link--active {
+  color: #6c63ff;
+  font-weight: 700;
+}
+
+/* active underline pill */
+.navbar__link--active::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 2.5px;
+  border-radius: 99px;
+  background: #6c63ff;
+}
+
+/* --- Actions --- */
+.navbar__actions {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.navbar__logout-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 16px;
+  border: 1.5px solid #e8e8ed;
+  border-radius: 50px;
+  background: transparent;
+  color: #4b4b5a;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+  white-space: nowrap;
+}
+
+.navbar__logout-btn:hover {
+  border-color: #e5365a;
+  color: #e5365a;
+  background: #fff0f3;
+}
+
+.navbar__logout-icon {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.navbar__logout-btn:hover .navbar__logout-icon {
+  transform: translateX(2px);
+}
+
+/* --- Responsive --- */
+@media (max-width: 560px) {
+  .navbar {
+    padding: 0 16px;
+    height: 56px;
+  }
+
+  .navbar__brand-text {
+    font-size: 1rem;
+  }
+
+  .navbar__link {
+    font-size: 0.82rem;
+    padding: 5px 10px;
+  }
+
+  .navbar__logout-btn {
+    padding: 6px 12px;
+    font-size: 0.78rem;
+  }
+}
+
+/* --- Reduced motion --- */
+@media (prefers-reduced-motion: reduce) {
+  .navbar__link,
+  .navbar__logout-btn,
+  .navbar__logout-icon {
+    transition: none;
+  }
+}

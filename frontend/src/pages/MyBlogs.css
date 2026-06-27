@@ -1,0 +1,192 @@
+/* =========================================
+   MyBlogs — personal post grid
+   ========================================= */
+
+/* --- Page --- */
+.mb-page {
+  min-height: 100vh;
+  background: #f6f6fb;
+  padding: 48px 16px 80px;
+}
+
+/* --- Column --- */
+.mb-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* =========================================
+   Loading
+   ========================================= */
+.mb-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  gap: 16px;
+  color: #8b8b9e;
+  font-size: 0.9rem;
+}
+
+.mb-loading__spinner {
+  width: 36px;
+  height: 36px;
+  border: 3px solid #e8e8ed;
+  border-top-color: #6c63ff;
+  border-radius: 50%;
+  animation: mb-spin 0.7s linear infinite;
+}
+
+@keyframes mb-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* =========================================
+   Header
+   ========================================= */
+.mb-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.mb-header__title {
+  margin: 0;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  color: #111118;
+}
+
+.mb-header__sub {
+  margin: 6px 0 0;
+  font-size: 0.9rem;
+  color: #8b8b9e;
+}
+
+/* Write / New Post button */
+.mb-write-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 10px 20px;
+  border-radius: 50px;
+  background: #6c63ff;
+  color: #fff;
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 0.18s ease, transform 0.15s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.mb-write-btn svg {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+}
+
+.mb-write-btn:hover {
+  background: #5549e8;
+  transform: translateY(-1px);
+}
+
+/* =========================================
+   Blog grid
+   ========================================= */
+.mb-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+/* =========================================
+   Empty state
+   ========================================= */
+.mb-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 14px;
+  padding: 72px 24px;
+  background: #fff;
+  border: 1px solid #e8e8ed;
+  border-radius: 20px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+}
+
+.mb-empty__icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: #ede9ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6c63ff;
+}
+
+.mb-empty__icon svg {
+  width: 28px;
+  height: 28px;
+}
+
+.mb-empty__title {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #111118;
+  letter-spacing: -0.02em;
+}
+
+.mb-empty__sub {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #8b8b9e;
+  max-width: 280px;
+}
+
+/* =========================================
+   Responsive
+   ========================================= */
+@media (max-width: 600px) {
+  .mb-page {
+    padding: 24px 12px 60px;
+  }
+
+  .mb-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .mb-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .mb-write-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* =========================================
+   Reduced motion
+   ========================================= */
+@media (prefers-reduced-motion: reduce) {
+  .mb-loading__spinner {
+    animation: none;
+  }
+
+  .mb-write-btn {
+    transition: none;
+  }
+}

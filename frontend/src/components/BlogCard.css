@@ -1,0 +1,269 @@
+/* =========================================
+   BlogCard — clean editorial card design
+   ========================================= */
+
+/* --- Tokens --- */
+:root {
+  --card-bg: #ffffff;
+  --card-border: #e8e8ed;
+  --card-radius: 16px;
+  --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 4px 16px rgba(0, 0, 0, 0.07);
+  --card-shadow-hover: 0 8px 28px rgba(0, 0, 0, 0.12);
+
+  --title-color: #111118;
+  --body-color: #4b4b5a;
+  --meta-color: #8b8b9e;
+  --accent: #6c63ff;
+  --accent-light: #ede9ff;
+  --like-active: #e5365a;
+  --like-active-bg: #fff0f3;
+}
+
+/* --- Card shell --- */
+.blog-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+  max-width: 380px;
+  width: 100%;
+}
+
+.blog-card:hover {
+  box-shadow: var(--card-shadow-hover);
+  transform: translateY(-3px);
+}
+
+/* --- Cover image --- */
+.blog-card__image-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: #f0f0f6;
+}
+
+.blog-card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.blog-card:hover .blog-card__image {
+  transform: scale(1.04);
+}
+
+.blog-card__image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 50%, rgba(0, 0, 0, 0.18));
+  pointer-events: none;
+}
+
+/* --- Body --- */
+.blog-card__body {
+  padding: 20px 22px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+
+/* --- Meta row --- */
+.blog-card__meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.blog-card__author-badge {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--body-color);
+  letter-spacing: 0.01em;
+}
+
+.blog-card__avatar {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  letter-spacing: 0;
+}
+
+.blog-card__read-time {
+  font-size: 0.72rem;
+  color: var(--meta-color);
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+/* --- Title --- */
+.blog-card__title {
+  margin: 0;
+  font-size: 1.08rem;
+  font-weight: 700;
+  line-height: 1.38;
+  color: var(--title-color);
+  letter-spacing: -0.01em;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* --- Excerpt --- */
+.blog-card__excerpt {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.65;
+  color: var(--body-color);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  flex: 1;
+}
+
+/* --- Divider before footer --- */
+.blog-card__body::after {
+  content: "";
+  display: block;
+  height: 1px;
+  background: var(--card-border);
+  margin: 2px 0 0;
+}
+
+/* --- Footer --- */
+.blog-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 4px;
+  gap: 8px;
+}
+
+/* --- Like button --- */
+.blog-card__like-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  border: 1.5px solid var(--card-border);
+  border-radius: 50px;
+  background: transparent;
+  color: var(--meta-color);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  line-height: 1;
+}
+
+.blog-card__like-btn:hover {
+  border-color: var(--like-active);
+  color: var(--like-active);
+  background: var(--like-active-bg);
+}
+
+.blog-card__like-btn--active {
+  border-color: var(--like-active);
+  color: var(--like-active);
+  background: var(--like-active-bg);
+}
+
+.blog-card__like-btn--loading {
+  opacity: 0.55;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.blog-card__heart {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.blog-card__like-btn:hover .blog-card__heart,
+.blog-card__like-btn--active .blog-card__heart {
+  transform: scale(1.2);
+}
+
+/* --- Read link --- */
+.blog-card__read-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 7px 16px;
+  border-radius: 50px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s ease, gap 0.2s ease;
+  white-space: nowrap;
+}
+
+.blog-card__read-link:hover {
+  background: #5549e8;
+  gap: 9px;
+}
+
+.blog-card__arrow {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.blog-card__read-link:hover .blog-card__arrow {
+  transform: translateX(2px);
+}
+
+/* --- Responsive --- */
+@media (max-width: 480px) {
+  .blog-card {
+    max-width: 100%;
+    border-radius: 12px;
+  }
+
+  .blog-card__body {
+    padding: 16px 16px 14px;
+  }
+
+  .blog-card__title {
+    font-size: 1rem;
+  }
+}
+
+/* --- Reduced motion --- */
+@media (prefers-reduced-motion: reduce) {
+
+  .blog-card,
+  .blog-card__image,
+  .blog-card__like-btn,
+  .blog-card__heart,
+  .blog-card__read-link,
+  .blog-card__arrow {
+    transition: none;
+  }
+}

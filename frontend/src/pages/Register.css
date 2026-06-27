@@ -1,0 +1,379 @@
+/* =========================================
+   Register — auth card matching Login
+   ========================================= */
+
+/* --- Page --- */
+.rg-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f6f6fb;
+  padding: 24px 16px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Ambient blobs */
+.rg-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.rg-blob--1 {
+  width: 400px;
+  height: 400px;
+  background: rgba(108, 99, 255, 0.11);
+  top: -100px;
+  left: -100px;
+}
+
+.rg-blob--2 {
+  width: 300px;
+  height: 300px;
+  background: rgba(229, 54, 90, 0.08);
+  bottom: -60px;
+  right: -60px;
+}
+
+/* --- Card --- */
+.rg-card {
+  position: relative;
+  z-index: 1;
+  background: #fff;
+  border: 1px solid #e8e8ed;
+  border-radius: 20px;
+  padding: 36px 32px 28px;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06), 0 16px 48px rgba(0,0,0,0.09);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* --- Brand --- */
+.rg-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.rg-brand__icon {
+  font-size: 1rem;
+  color: #6c63ff;
+  line-height: 1;
+}
+
+.rg-brand__name {
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: #111118;
+}
+
+/* --- Header --- */
+.rg-header {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.rg-header__title {
+  margin: 0;
+  font-size: 1.6rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: #111118;
+}
+
+.rg-header__sub {
+  margin: 0;
+  font-size: 0.875rem;
+  color: #8b8b9e;
+}
+
+/* --- Error --- */
+.rg-error {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 11px 14px;
+  border-radius: 10px;
+  background: #fff0f3;
+  border: 1px solid #ffd6de;
+  color: #c0213f;
+  font-size: 0.845rem;
+  font-weight: 500;
+  animation: rg-fade-in 0.22s ease;
+}
+
+.rg-error svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+@keyframes rg-fade-in {
+  from { opacity: 0; transform: translateY(-5px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Form --- */
+.rg-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Field */
+.rg-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.rg-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #4b4b5a;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+/* Input wrap */
+.rg-input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.rg-input-icon {
+  position: absolute;
+  left: 13px;
+  width: 15px;
+  height: 15px;
+  color: #b0b0c0;
+  pointer-events: none;
+  flex-shrink: 0;
+}
+
+.rg-input {
+  width: 100%;
+  padding: 11px 14px 11px 40px;
+  border: 1.5px solid #e8e8ed;
+  border-radius: 10px;
+  background: #fafafa;
+  font-size: 0.9rem;
+  color: #111118;
+  font-family: inherit;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+  box-sizing: border-box;
+}
+
+.rg-input::placeholder {
+  color: #c0c0d0;
+}
+
+.rg-input:focus {
+  outline: none;
+  border-color: #6c63ff;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.1);
+}
+
+.rg-input:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.rg-input--padded-right {
+  padding-right: 42px;
+}
+
+.rg-input--error {
+  border-color: #e5365a !important;
+  box-shadow: 0 0 0 3px rgba(229, 54, 90, 0.1) !important;
+}
+
+.rg-input--valid {
+  border-color: #22c064 !important;
+  box-shadow: 0 0 0 3px rgba(34, 192, 100, 0.1) !important;
+}
+
+/* Eye button */
+.rg-eye-btn {
+  position: absolute;
+  right: 12px;
+  width: 20px;
+  height: 20px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: #b0b0c0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: color 0.15s ease;
+}
+
+.rg-eye-btn:hover {
+  color: #6c63ff;
+}
+
+.rg-eye-btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* =========================================
+   Password strength meter
+   ========================================= */
+.rg-strength {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 2px;
+}
+
+.rg-strength__bars {
+  display: flex;
+  gap: 4px;
+  flex: 1;
+}
+
+.rg-strength__bar {
+  height: 4px;
+  flex: 1;
+  border-radius: 99px;
+  background: #e8e8ed;
+  transition: background 0.2s ease;
+}
+
+.rg-strength__label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  white-space: nowrap;
+  min-width: 60px;
+  text-align: right;
+}
+
+/* Level colours */
+.rg-strength--1 .rg-strength__bar:nth-child(-n+1),
+.rg-strength--1.rg-strength__label { color: #e5365a; }
+.rg-strength--1 .rg-strength__bar:nth-child(-n+1) { background: #e5365a; }
+
+.rg-strength--2 .rg-strength__bar:nth-child(-n+2) { background: #f0903a; }
+.rg-strength--2.rg-strength__label { color: #f0903a; }
+
+.rg-strength--3 .rg-strength__bar:nth-child(-n+3) { background: #f5c842; }
+.rg-strength--3.rg-strength__label { color: #c89e10; }
+
+.rg-strength--4 .rg-strength__bar:nth-child(-n+4) { background: #22c064; }
+.rg-strength--4.rg-strength__label { color: #16914a; }
+
+.rg-strength--5 .rg-strength__bar:nth-child(-n+5) { background: #6c63ff; }
+.rg-strength--5.rg-strength__label { color: #6c63ff; }
+
+/* =========================================
+   Submit
+   ========================================= */
+.rg-submit {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px;
+  border: none;
+  border-radius: 50px;
+  background: #6c63ff;
+  color: #fff;
+  font-size: 0.92rem;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 4px;
+  transition: background 0.18s ease, transform 0.15s ease, opacity 0.18s ease;
+}
+
+.rg-submit:hover:not(:disabled) {
+  background: #5549e8;
+  transform: translateY(-1px);
+}
+
+.rg-submit:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.rg-submit__spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(255,255,255,0.35);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: rg-spin 0.65s linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes rg-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* =========================================
+   Footer
+   ========================================= */
+.rg-footer {
+  margin: 0;
+  text-align: center;
+  font-size: 0.855rem;
+  color: #8b8b9e;
+}
+
+.rg-footer__link {
+  color: #6c63ff;
+  font-weight: 700;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.rg-footer__link:hover {
+  color: #5549e8;
+}
+
+/* =========================================
+   Responsive
+   ========================================= */
+@media (max-width: 480px) {
+  .rg-card {
+    padding: 28px 18px 22px;
+    border-radius: 16px;
+  }
+
+  .rg-header__title {
+    font-size: 1.35rem;
+  }
+}
+
+/* =========================================
+   Reduced motion
+   ========================================= */
+@media (prefers-reduced-motion: reduce) {
+  .rg-error,
+  .rg-input,
+  .rg-submit,
+  .rg-eye-btn,
+  .rg-strength__bar {
+    transition: none;
+    animation: none;
+  }
+
+  .rg-submit__spinner {
+    animation: none;
+  }
+}
