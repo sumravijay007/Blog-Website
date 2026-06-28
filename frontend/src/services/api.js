@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-    baseURL: process.env.BASE_URL,
+    baseURL: "https://blog-website-glfx.onrender.com/api", // process.env.BASE_URL,
 });
 
 // Request interceptor to add token
