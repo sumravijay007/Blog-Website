@@ -99,12 +99,16 @@
   font-weight: 800;
   letter-spacing: -0.025em;
   color: #111118;
+  text-align: center;
 }
 
-.ub-header__sub {
+.ub-header__sub p {
   margin: 0;
   font-size: 0.875rem;
   color: #8b8b9e;
+  text-align: center;
+
+
 }
 
 /* =========================================
@@ -326,6 +330,7 @@
   .ub-header {
     flex-direction: column;
     gap: 10px;
+    text-align: center;
   }
 
   .ub-form {

@@ -41,6 +41,7 @@ function BlogCard({ blog, refreshBlogs }) {
   const readTime = Math.max(1, Math.ceil(wordCount / 200));
 
   return (
+    
     <article className="blog-card">
       {blog.image && (
         <div className="blog-card__image-wrap">
